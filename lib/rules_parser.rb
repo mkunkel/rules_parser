@@ -45,9 +45,7 @@ class RulesParser
 
   def write_to_file
     output = File.open(@file_out, 'w')
-    @lines.each do |line|
-      output.puts line
-    end
+    @lines.each { |line| output.puts line }
     output.close
   end
 end
