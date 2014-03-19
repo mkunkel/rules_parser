@@ -19,21 +19,21 @@ describe RulesParser do
   end
 
   context 'instance methods' do
-    describe '.parse_line' do
+    describe '.line_to_csv' do
       it 'Should recognize a section' do
-        actual = @parser.parse_line("5 PENALTIES")
+        actual = @parser.line_to_csv("5 PENALTIES")
         expected = "5,PENALTIES,level1"
         expect(actual).to eq(expected)
       end
 
       it 'Should recognize a subsection' do
-        actual = @parser.parse_line("5.1 A TYPE OF PENALTY")
+        actual = @parser.line_to_csv("5.1 A TYPE OF PENALTY")
         expected = "5.1,A TYPE OF PENALTY,level2"
         expect(actual).to eq(expected)
       end
 
       it 'Should recognize a rule 3 levels deep' do
-        actual = @parser.parse_line("5.1.1 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, dolorem officia nihil laboriosam! Similique, fuga.
+        actual = @parser.line_to_csv("5.1.1 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, dolorem officia nihil laboriosam! Similique, fuga.
 Penalty")
         expected = "5.1.1,Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, dolorem officia nihil laboriosam! Similique, fuga.
 Penalty,level3"
@@ -41,7 +41,7 @@ Penalty,level3"
       end
 
       it 'Should recognize a rule 7 levels deep' do
-        actual = @parser.parse_line("5.1.1.4.3.8.4 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, dolorem officia nihil laboriosam! Similique, fuga.
+        actual = @parser.line_to_csv("5.1.1.4.3.8.4 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, dolorem officia nihil laboriosam! Similique, fuga.
 Penalty")
         expected = "5.1.1.4.3.8.4,Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, dolorem officia nihil laboriosam! Similique, fuga.
 Penalty,level7"
@@ -50,13 +50,13 @@ Penalty,level7"
 
       it 'Should recognize a paragraph' do
         paragraph = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, ullam, ad, ratione, non natus dignissimos unde sapiente mollitia cupiditate molestiae aspernatur voluptate quo maxime atque at sit deserunt. Recusandae, facere fugit veritatis earum molestiae laudantium excepturi rerum minus voluptatum nisi!"
-        actual = @parser.parse_line(paragraph)
+        actual = @parser.line_to_csv(paragraph)
         expected = ",#{paragraph},paragraph"
         expect(actual).to eq(expected)
       end
 
       it 'Should recognize a header' do
-        actual = @parser.parse_line("No Impact/No Penalty")
+        actual = @parser.line_to_csv("No Impact/No Penalty")
         expected = ",No Impact/No Penalty,header"
         expect(actual).to eq(expected)
       end
