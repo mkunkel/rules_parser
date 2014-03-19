@@ -18,7 +18,7 @@ describe RulesParser do
     end
   end
 
-  context 'instance methods' do
+  context 'private methods' do
     describe '.line_to_csv' do
       it 'Should recognize a section' do
         actual = @parser.instance_eval{line_to_csv("5 PENALTIES")}
@@ -55,6 +55,47 @@ describe RulesParser do
         actual = @parser.instance_eval{line_to_csv("No Impact/No Penalty")}
         expected = ",No Impact/No Penalty,header"
         expect(actual).to eq(expected)
+      end
+
+      it 'Should recognize a placeholder' do
+        actual = @parser.instance_eval{line_to_csv("--index--")}
+        expected = ",index,placeholder"
+        expect(actual).to eq(expected)
+      end
+
+      it 'Should not accept lines with only whitespace' do
+        actual = @parser.instance_eval{line_to_csv("            \n   ")}
+        expect(actual).to be_false
+      end
+    end
+
+    describe '.get_type' do
+      it 'Should raise an ArgumentError if no argument is provided' do
+        lambda {@parser.instance_eval{get_type}}.should raise_error(ArgumentError)
+      end
+
+      it 'Should raise an ArgumentError if one argument is provided' do
+        lambda {@parser.instance_eval{get_type("text")}}.should raise_error(ArgumentError)
+      end
+
+      it 'Should return header for headers' do
+        actual = @parser.instance_eval{get_type("", "Expulsion (gross misconduct)")}
+        expect(actual).to eq("header")
+      end
+
+      it 'Should return paragraph for paragraphs' do
+        actual = @parser.instance_eval{get_type("", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti dolore repellendus illum doloremque et aperiam ea fugiat quos alias consequatur!")}
+        expect(actual).to eq("paragraph")
+      end
+
+      it 'Should return a level number for rules' do
+        actual = @parser.instance_eval{get_type("6.2.5", "Lorem ipsum dolor sit amet.")}
+        expect(actual).to eq("level3")
+      end
+
+      it 'Should return placeholder for placeholders' do
+        actual = @parser.instance_eval{get_type("", "--index--")}
+        expect(actual).to eq("placeholder")
       end
     end
   end
