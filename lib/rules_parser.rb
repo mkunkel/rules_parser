@@ -5,13 +5,18 @@ class RulesParser
   end
 
   def write
+    read
+    convert
     write_to_file
   end
 
   private
+  def convert
+    @lines = @lines.map{ |line| line_to_csv(line)}
+  end
 
-  def get_lines
-    IO.readlines(@file_in)
+  def get_lines file_in
+    IO.readlines(file_in)
   end
 
   def get_type(number, text)
@@ -34,11 +39,14 @@ class RulesParser
     "#{number},#{text},#{type}"
   end
 
+  def read
+    @lines = get_lines(@file_in).select{ |line| line unless line.strip.chomp.empty?}
+  end
+
   def write_to_file
     output = File.open(@file_out, 'w')
-    get_lines.each do |line|
-      next_line = line_to_csv(line)
-      output.puts next_line if next_line
+    @lines.each do |line|
+      output.puts line
     end
     output.close
   end
