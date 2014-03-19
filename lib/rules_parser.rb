@@ -30,7 +30,7 @@ class RulesParser
   end
 
   def line_to_csv(line)
-    return false if line.strip.chomp.length == 0
+    return false if line.strip.chomp.empty?
     regex = /^[\d\.]*/
     number = line[regex]
     text = line.gsub(regex, "").strip.chomp
