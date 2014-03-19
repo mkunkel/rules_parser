@@ -33,18 +33,14 @@ describe RulesParser do
       end
 
       it 'Should recognize a rule 3 levels deep' do
-        actual = @parser.line_to_csv("5.1.1 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, dolorem officia nihil laboriosam! Similique, fuga.
-Penalty")
-        expected = "5.1.1,Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, dolorem officia nihil laboriosam! Similique, fuga.
-Penalty,level3"
+        actual = @parser.line_to_csv("5.1.1 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, dolorem officia nihil laboriosam! Similique, fuga.")
+        expected = "5.1.1,Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, dolorem officia nihil laboriosam! Similique, fuga.,level3"
         expect(actual).to eq(expected)
       end
 
       it 'Should recognize a rule 7 levels deep' do
-        actual = @parser.line_to_csv("5.1.1.4.3.8.4 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, dolorem officia nihil laboriosam! Similique, fuga.
-Penalty")
-        expected = "5.1.1.4.3.8.4,Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, dolorem officia nihil laboriosam! Similique, fuga.
-Penalty,level7"
+        actual = @parser.line_to_csv("5.1.1.4.3.8.4 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, dolorem officia nihil laboriosam! Similique, fuga.")
+        expected = "5.1.1.4.3.8.4,Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, dolorem officia nihil laboriosam! Similique, fuga.,level7"
         expect(actual).to eq(expected)
       end
 

@@ -7,8 +7,20 @@ class RulesParser
     IO.readlines(@file_name)
   end
 
-  def line_to_csv(line)
+  def get_type(number, text)
+    if number.length > 0
+      "level#{number.split('.').length}"
+    else
+      text.length > 30 ? "paragraph" : "header"
+    end
+  end
 
+  def line_to_csv(line)
+    regex = /^[\d\.]*/
+    number = line[regex]
+    text = line.gsub(regex, "").strip.chomp
+    type = get_type(number, text)
+    "#{number},#{text},#{type}"
   end
 
   def write_to_file
