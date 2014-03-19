@@ -1,0 +1,13 @@
+5 PENALTIES
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, eaque minima earum expedita assumenda dolor eligendi blanditiis facere eos saepe!
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, esse, fugit, similique dolores illum voluptatem ullam excepturi cum accusantium corrupti laboriosam pariatur consequuntur animi laudantium eligendi ipsum officia repellat. Voluptates?
+TYPES OF PENALTIES
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, odio.
+
+5.1 A TYPE OF PENALTY
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, ullam, ad, ratione, non natus dignissimos unde sapiente mollitia cupiditate molestiae aspernatur voluptate quo maxime atque at sit deserunt. Recusandae, facere fugit veritatis earum molestiae laudantium excepturi rerum minus voluptatum nisi!
+No Impact/No Penalty
+5.1.1 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, dolorem officia nihil laboriosam! Similique, fuga.
+Penalty
+5.1.2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, asperiores ab quisquam similique quis iusto.
+5.1.2.1 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit, consequuntur maxime dolorem non accusantium omnis distinctio consequatur ad veniam laboriosam!
