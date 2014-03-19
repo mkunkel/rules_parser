@@ -18,6 +18,30 @@ describe RulesParser do
     end
   end
 
+  context 'instance methods' do
+    describe '.write' do
+      after(:each) do
+        FileUtils.rm "output.csv"  if File.exists?("output.csv")
+        FileUtils.rm "new.csv" if File.exists?("new.csv")
+      end
+
+      it 'Should properly write to a default file' do
+        @parser.write
+        expected = IO.readlines "spec/expected.csv"
+        actual = IO.readlines "output.csv"
+        expect(actual).to eq(expected)
+      end
+
+      it 'Should properly write to a specified file' do
+        new_parser = RulesParser.new "spec/test_data.txt", "new.csv"
+        new_parser.write
+        expected = IO.readlines "spec/expected.csv"
+        actual = IO.readlines "new.csv"
+        expect(actual).to eq(expected)
+      end
+    end
+  end
+
   context 'private methods' do
     describe '.line_to_csv' do
       it 'Should recognize a section' do

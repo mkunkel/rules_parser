@@ -7,6 +7,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, odio.
 5.1 A TYPE OF PENALTY
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, ullam, ad, ratione, non natus dignissimos unde sapiente mollitia cupiditate molestiae aspernatur voluptate quo maxime atque at sit deserunt. Recusandae, facere fugit veritatis earum molestiae laudantium excepturi rerum minus voluptatum nisi!
 No Impact/No Penalty
+--figure--
 5.1.1 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, dolorem officia nihil laboriosam! Similique, fuga.
 Penalty
 5.1.2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, asperiores ab quisquam similique quis iusto.

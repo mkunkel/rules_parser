@@ -1,12 +1,17 @@
 class RulesParser
-  def initialize(file_name)
-    @file_name = file_name
+  def initialize(file_in, file_out = 'output.csv')
+    @file_in = file_in
+    @file_out = file_out
+  end
+
+  def write
+    write_to_file
   end
 
   private
 
   def get_lines
-    IO.readlines(@file_name)
+    IO.readlines(@file_in)
   end
 
   def get_type(number, text)
@@ -30,10 +35,10 @@ class RulesParser
   end
 
   def write_to_file
-    output = File.open(@file_name, 'w')
-    @config.each do |key, value|
-      output.puts "[#{key}]"
-      value.each { |k, v| output.puts "#{k}:#{v}" }
+    output = File.open(@file_out, 'w')
+    get_lines.each do |line|
+      next_line = line_to_csv(line)
+      output.puts next_line if next_line
     end
     output.close
   end
