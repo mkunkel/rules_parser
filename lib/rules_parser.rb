@@ -3,6 +3,8 @@ class RulesParser
     @file_name = file_name
   end
 
+  private
+
   def get_lines
     IO.readlines(@file_name)
   end
